@@ -1,0 +1,4 @@
+SPARQLWrapper==1.8.5
+rdflib==6.4.2
+requests
+
