@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FUNC_BLOCK Name="MissingSkill" Type="FB">
+    <Interface>
+        <EventInputs>
+            <Event Name="INIT"/>
+            <Event Name="REQ"/>
+        </EventInputs>
+        <EventOutputs>
+            <Event Name="CNF"/>
+            <Event Name="EO"/>
+        </EventOutputs>
+        <DataInputs>
+            <Var Name="InputSignal" Type="BOOL"/>
+        </DataInputs>
+        <DataOutputs>
+            <Var Name="OutputSignal" Type="BOOL"/>
+        </DataOutputs>
+    </Interface>
+    <Algorithms>
+        <!-- Add algorithm code here -->
+    </Algorithms>
+    <ECStateMachine>
+        <!-- Add Execution Control logic here -->
+    </ECStateMachine>
+</FUNC_BLOCK>
