@@ -14,8 +14,8 @@ import os
 
 # Allow override via environment variable (useful for deployment)
 GRAPHDB_REPOSITORY = os.getenv(
-    "GRAPHDB_REPOSITORY",
-    "http://LAP-OM-HUSSAIN:7200/repositories/festo"
+    "repoName",
+    "repo_link"
 )
 
 # Basic validation
