@@ -1,3 +1,207 @@
+
+# 🤖 LLM-Driven Manufacturability Analysis for FESTO Distribution Station
+
+An experimental research project exploring how **Large Language Models (LLMs), knowledge graphs, ontologies, industrial automation, and simulation** can work together to automatically determine whether a product or production process can be implemented on a given manufacturing line.
+
+The **FESTO MPS Distribution Station** is used as a simplified industrial use case for investigating manufacturability analysis, capability gaps, automated solution generation, and simulation-based validation.
+
+---
+
+## 🎯 Project Goal
+
+The main goal is to build an intelligent system that can answer a fundamental manufacturing question:
+
+> **"Can this product or production process be implemented on this production line?"**
+
+To answer this question, the system reasons over multiple layers of knowledge describing the manufacturing environment, identifies incompatibilities or missing capabilities, and proposes possible solutions.
+
+These solutions may include:
+
+* 🔗 Adding missing ontology relationships
+* 🏭 Adding required equipment or tools
+* ⚙️ Identifying missing production capabilities
+* 🧩 Detecting incompatible parameters
+* 💻 Identifying missing control logic
+* 🤖 Generating IEC 61499/PLC code patches
+
+---
+
+## 🧠 Knowledge Graph & Ontology
+
+The project uses **GraphDB** as the knowledge-graph foundation. The manufacturing environment is represented through multiple interconnected ontological layers describing:
+
+* Product features
+* Structural properties of the production line
+* Functional capabilities
+* Available machinery and equipment
+* Automation and control software
+* Recipes and related system information
+
+By connecting these concepts in a knowledge graph, the system can reason about relationships between **products, processes, machines, capabilities, and control logic**.
+
+---
+
+## 🤖 LLM-Based Reasoning
+
+A key research direction is combining traditional semantic reasoning with **Large Language Models**.
+
+The system can potentially use:
+
+**User Request → LLM → Knowledge Graph → SPARQL/Reasoning → Manufacturability Analysis → Gap Identification → Proposed Solution**
+
+For example, when a user asks whether a particular process can be executed on the FESTO Distribution Station, the system can analyze the available capabilities and identify:
+
+* Missing machinery
+* Missing operations
+* Unsupported parameters
+* Missing relationships in the ontology
+* Missing automation logic
+
+The project specifically investigates whether **SPARQL queries, LLM-based analysis, or a combination of both** can establish whether a product or process is implementable on a production line.
+
+---
+
+## ⚙️ Skills-Based Industrial Automation
+
+The FESTO Distribution Station control application is based on the **Skills approach** using **IEC 61499** and **EcoStruxure Automation Expert**.
+
+A skill represents a unified, stateful service associated with a mechatronic component. Each operation exposes a standardized interface that can be invoked through:
+
+* IEC 61499 applications
+* HMI faceplates
+* OPC UA
+
+This approach improves interoperability and makes the structure of the automation system easier to understand by representing relationships between skills in a knowledge graph.
+
+---
+
+## 🔍 Research Questions
+
+The project investigates three primary research questions:
+
+### RQ1 — Manufacturability Analysis
+
+How can a collection of documents describing different aspects of an automated production system be used to automatically determine whether a particular product or process can be produced or implemented?
+
+The investigation includes:
+
+* GraphDB
+* SPARQL
+* Ontology-based reasoning
+* LLM-based analysis
+* Hybrid semantic + LLM approaches
+
+### RQ2 — Automatic Gap Identification & Generation
+
+If a product or process cannot be implemented, how can the system automatically identify the missing physical or software components?
+
+The longer-term objective is to explore whether these missing components can also be **automatically generated or proposed**.
+
+### RQ3 — Simulation-Based Validation
+
+How can simulation models of production modules be integrated into the manufacturability-analysis workflow?
+
+The project considers developing or using simulation models and connecting them to the **SoftPLC of EcoStruxure Automation Expert**, potentially enabling proposed solutions to be tested in a simulated production environment.
+
+---
+
+## 🏭 FESTO MPS Distribution Station
+
+The **FESTO MPS Distribution Station** acts as the primary experimental platform for the project.
+
+The provided control application demonstrates a semi-automatic implementation using the Skills approach. The system can be operated through a simulation canvas where individual skills can be initiated through their HMI faceplates.
+
+This makes the station a useful simplified environment for experimenting with:
+
+> **Ontology → Knowledge Graph → AI Reasoning → Gap Detection → Automation → Simulation**
+
+---
+
+## 🔄 Conceptual Workflow
+
+```text
+                    User / Product Specification
+                              │
+                              ▼
+                     ┌─────────────────┐
+                     │      LLM        │
+                     │ Reasoning Layer │
+                     └────────┬────────┘
+                              │
+                              ▼
+                    ┌─────────────────┐
+                    │     GraphDB     │
+                    │ Knowledge Graph │
+                    └────────┬────────┘
+                              │
+                    SPARQL / Semantic
+                         Reasoning
+                              │
+                              ▼
+                  ┌─────────────────────┐
+                  │ Manufacturability  │
+                  │      Analysis       │
+                  └──────────┬──────────┘
+                             │
+                 ┌───────────┴───────────┐
+                 ▼                       ▼
+          Implementable            Not Implementable
+                 │                       │
+                 ▼                       ▼
+             Execute              Gap Identification
+                                         │
+                              ┌──────────┴──────────┐
+                              ▼                     ▼
+                       Physical Gaps          Software Gaps
+                              │                     │
+                              └──────────┬──────────┘
+                                         ▼
+                              Proposed / Generated
+                                  Improvements
+                                         │
+                                         ▼
+                              Simulation / SoftPLC
+                                  Validation
+```
+
+---
+
+## 🧩 Technologies & Concepts
+
+The project brings together several technologies and research areas:
+
+| Area                        | Technology / Concept          |
+| --------------------------- | ----------------------------- |
+| 🧠 AI                       | Large Language Models (LLMs)  |
+| 🕸️ Knowledge Graph         | GraphDB                       |
+| 🔎 Querying                 | SPARQL                        |
+| 📚 Semantic Modeling        | RDF / Ontologies              |
+| ⚙️ Automation               | IEC 61499                     |
+| 🏭 Industrial Automation    | EcoStruxure Automation Expert |
+| 🔌 Industrial Communication | OPC UA                        |
+| 🎛️ Control                 | SoftPLC                       |
+| 🧩 Architecture             | Skills-based automation       |
+| 🧪 Validation               | Simulation / Digital Twin     |
+
+The provided project materials include an EcoStruxure Automation Expert solution, RDF/Turtle ontologies, ontology visualizations, a demonstration video, and supporting presentation material.
+
+---
+
+## 🚀 Vision
+
+The broader vision of this project is to explore a more **intelligent, semantic, interoperable, and adaptable approach to industrial automation**.
+
+Instead of manually checking whether a new product can be produced on an existing production line, an intelligent system could understand the capabilities of the line, reason over its available equipment and software, identify what is missing, propose how the gaps can be resolved, and potentially validate the proposed solution through simulation.
+
+In this way, the project investigates the intersection of:
+
+**🤖 Artificial Intelligence + 🕸️ Knowledge Graphs + 🏭 Industrial Automation + 🔌 OPC UA + ⚙️ IEC 61499 + 🧪 Simulation**
+
+with the **FESTO MPS Distribution Station** serving as the experimental platform for developing and evaluating these ideas.
+
+
+
+
 # FESTO Manufacturability Prototype
 
 This project is a **prototype system to evaluate the manufacturability of recipes on a FESTO Distribution Station**, detect missing skills, and generate IEC 61499 Function Blocks (FBs) for missing capabilities. It uses RDF/OWL ontologies and SPARQL queries to reason over recipes, skills, and station capabilities.
